@@ -195,25 +195,6 @@ curl -X POST http://localhost:8080 \
 | `npm start` | `functions-framework --target=contact` (run `build` first). |
 | `npm run gcp-build` | Hook executed by Google Cloud Build during deployment; runs `build`. |
 
-## Deployment
-
-Deploy from the project root; Cloud Build installs dependencies and runs `gcp-build` automatically. Set the environment variables on the service (prefer Secret Manager for `SECRET_KEY` and `MAILTRAP_API_TOKEN`).
-
-```bash
-gcloud functions deploy contact \
-  --gen2 \
-  --runtime nodejs24 \
-  --region <REGION> \
-  --source . \
-  --entry-point contact \
-  --trigger-http \
-  --allow-unauthenticated \
-  --set-env-vars MAILTRAP_SENDER_NAME="My Website",MAILTRAP_SENDER_EMAIL=hello@your-domain.com,PERSONAL_EMAIL=me@example.com \
-  --set-secrets SECRET_KEY=contact-secret-key:latest,MAILTRAP_API_TOKEN=mailtrap-api-token:latest
-```
-
-`--allow-unauthenticated` is used because access control is handled in the function by the Bearer token. Adjust the runtime to the newest Node.js version supported by your gcloud release if `nodejs24` is not yet available.
-
 ## Security Notes
 
 - **Shared secret:** requests without the exact Bearer token get `401`; comparison is constant-time.
