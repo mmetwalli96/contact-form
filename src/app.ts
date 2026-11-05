@@ -37,7 +37,7 @@ gcFunctions.http("contact", async (req: Request, res: Response) => {
                 }
             ],
             subject: body.subject,
-            text: `You have been contacted by ${body.name} (${body.email})\n\nHere is their message:\n${body.message}`
+            text: `You have been contacted by ${body.name} (${body.email})\n\nHere is the message:\n\n${body.message}`
         });
         res.status(200).send({ success: true, message: "Email sent successfully" });
     } catch (error) {

@@ -134,7 +134,7 @@ Subject:  <subject from the form>
 
 You have been contacted by <name> (<email>)
 
-Here is their message:
+Here is the message:
 <message>
 ```
 
