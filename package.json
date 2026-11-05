@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "build": "npm run clean && npm run typecheck && npm run bundle",
-    "gcp-build": "npm run build",
     "start": "functions-framework --target=contact",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",

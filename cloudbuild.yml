@@ -1,0 +1,7 @@
+steps:
+- name: 'npm'
+  args: ['run', 'build']
+logsBucket: 'gs://mmetwalli_logs'
+serviceAccount: 'projects/mmetwalli/serviceAccounts/cloudrun@mmetwalli.iam.gserviceaccount.com'
+options:
+  logging: GCS_ONLY
